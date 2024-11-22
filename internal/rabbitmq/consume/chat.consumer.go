@@ -15,7 +15,7 @@ type ChatConsume struct {
 	ch        *amqp.Channel
 }
 
-func NewChatConsume(conn *rabbitmq.RabbitMQConn, username string) (*ChatConsume, error) {
+func NewChatConsume(conn *rabbitmq.RabbitMQConn, username string) (interfaces.IChatConsume, error) {
 	ch, err := conn.Channel()
 	if err != nil {
 		return nil, err
@@ -48,7 +48,7 @@ func NewChatConsume(conn *rabbitmq.RabbitMQConn, username string) (*ChatConsume,
 	}, nil
 }
 
-func (c *ChatConsume) Run(handler func(mess types.Message) interfaces.AckType) error {
+func (c *ChatConsume) Run(handler func(mess types.Message) types.AckType) error {
 	deliveryCh, err := c.ch.Consume(c.queueName, "", false, false, false, false, nil)
 	if err != nil {
 		return err
@@ -65,11 +65,11 @@ func (c *ChatConsume) Run(handler func(mess types.Message) interfaces.AckType) e
 
 			ackType := handler(body)
 			switch ackType {
-			case interfaces.Ack:
+			case types.Ack:
 				msg.Ack(false)
-			case interfaces.NackRequeue:
+			case types.NackRequeue:
 				msg.Nack(false, true)
-			case interfaces.NackDiscard:
+			case types.NackDiscard:
 				msg.Nack(false, false)
 			}
 		}

@@ -4,7 +4,6 @@ import (
 	"testing"
 	"time"
 
-	"github.com/tommjj/rabbimq-chat/internal/interfaces"
 	"github.com/tommjj/rabbimq-chat/internal/rabbitmq"
 	"github.com/tommjj/rabbimq-chat/internal/types"
 	"github.com/tommjj/rabbimq-chat/pkg/pcolor"
@@ -24,9 +23,9 @@ func TestChatConsume(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	consume.Run(func(mess types.Message) interfaces.AckType {
+	consume.Run(func(mess types.Message) types.AckType {
 		t.Log(pcolor.Blue.Sprint(mess))
-		return interfaces.NackRequeue
+		return types.NackRequeue
 	})
 
 	time.Sleep(time.Hour)

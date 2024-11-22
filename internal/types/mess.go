@@ -1,6 +1,9 @@
 package types
 
-type Message struct {
-	From User
-	Text string
-}
+type AckType int
+
+const (
+	Ack AckType = iota
+	NackRequeue
+	NackDiscard
+)

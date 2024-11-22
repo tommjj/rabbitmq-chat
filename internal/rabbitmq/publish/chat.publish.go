@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 
 	amqp "github.com/rabbitmq/amqp091-go"
+	"github.com/tommjj/rabbimq-chat/internal/interfaces"
 	"github.com/tommjj/rabbimq-chat/internal/rabbitmq"
 	"github.com/tommjj/rabbimq-chat/internal/types"
 )
@@ -14,7 +15,7 @@ type ChatPub struct {
 	ch   *amqp.Channel
 }
 
-func NewChatPub(conn *rabbitmq.RabbitMQConn) (*ChatPub, error) {
+func NewChatPub(conn *rabbitmq.RabbitMQConn) (interfaces.IChatPublish, error) {
 	ch, err := conn.Channel()
 	if err != nil {
 		return nil, err
