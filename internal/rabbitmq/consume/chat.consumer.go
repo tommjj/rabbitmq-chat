@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 
 	amqp "github.com/rabbitmq/amqp091-go"
-	"github.com/tommjj/rabbimq-chat/internal/interfaces"
-	"github.com/tommjj/rabbimq-chat/internal/rabbitmq"
-	"github.com/tommjj/rabbimq-chat/internal/types"
+	"github.com/tommjj/rabbitmq-chat/internal/rabbitmq"
+	"github.com/tommjj/rabbitmq-chat/internal/x/interfaces"
+	"github.com/tommjj/rabbitmq-chat/internal/x/types"
 )
 
 type ChatConsume struct {

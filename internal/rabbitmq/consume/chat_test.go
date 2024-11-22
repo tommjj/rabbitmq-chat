@@ -4,9 +4,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/tommjj/rabbimq-chat/internal/rabbitmq"
-	"github.com/tommjj/rabbimq-chat/internal/types"
-	"github.com/tommjj/rabbimq-chat/pkg/pcolor"
+	"github.com/tommjj/rabbitmq-chat/internal/rabbitmq"
+	"github.com/tommjj/rabbitmq-chat/internal/x/types"
+	"github.com/tommjj/rabbitmq-chat/pkg/pcolor"
 )
 
 const connectionString = "amqp://guest:guest@localhost:5672/"

@@ -1,4 +1,4 @@
-module github.com/tommjj/rabbimq-chat
+module github.com/tommjj/rabbitmq-chat
 
 go 1.22.7
 

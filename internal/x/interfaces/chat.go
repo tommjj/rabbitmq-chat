@@ -3,7 +3,7 @@ package interfaces
 import (
 	"context"
 
-	"github.com/tommjj/rabbimq-chat/internal/types"
+	"github.com/tommjj/rabbitmq-chat/internal/x/types"
 )
 
 type IChatPublish interface {
